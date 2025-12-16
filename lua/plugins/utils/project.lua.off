@@ -1,0 +1,14 @@
+return {
+  "ahmedkhalf/project.nvim",
+  opts = {
+    manual_mode = false, -- default: false
+  },
+  keys = {
+    -- leader P AddProject
+    {
+      "<leader>fP",
+      "<cmd>AddProject<cr>",
+      { desc = "Add new project" },
+    },
+  },
+}

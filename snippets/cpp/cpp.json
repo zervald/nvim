@@ -1,0 +1,9 @@
+{
+  "forint": {
+    "prefix": [
+      "fori",
+      "forint"
+    ],
+    "body": "for (int i = ${2:0}; i < ${1:size}; ++i) {\n  $0\n}"
+  }
+}

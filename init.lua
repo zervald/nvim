@@ -21,6 +21,7 @@ require('nixCatsUtils.lazyCat').setup(nixCats.pawsible { 'allPlugins', 'start', 
   -- precompiled binaries do not agree with nixos, and we can just make nix install this stuff for us.
   { 'mason-org/mason-lspconfig.nvim', enabled = require('nixCatsUtils').lazyAdd(true, false) },
   { 'mason-org/mason.nvim', enabled = require('nixCatsUtils').lazyAdd(true, false) },
+  { 'jay-babu/mason-nvim-dap.nvim', enabled = require('nixCatsUtils').lazyAdd(true, false) },
   -- {
   --   'nvim-treesitter/nvim-treesitter',
   --   branch = 'main',

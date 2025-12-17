@@ -63,6 +63,7 @@ let
       # this includes LSPs
       lspsAndRuntimeDeps = with pkgs; {
         general = [
+          clang
           curl
           fd
           imagemagick
@@ -70,23 +71,21 @@ let
           python3Packages.jupytext # jupyter notebook dep
           quarto
           ripgrep
-
-          clang
-          clang-tools
-          lldb
-          vscode-extensions.vadimcn.vscode-lldb
-
           stdenv.cc.cc
           stylua
           tectonic
           tree-sitter
           universal-ctags
 
+          ## Debuggers
+          vscode-extensions.vadimcn.vscode-lldb # c/cpp debugger
+
           ## lsp, formaters and linters
           angular-language-server
           asm-lsp # assembly
-          csharpier # csharp
-          fantomas # F lang
+          clang-tools # clangd lsp
+          csharpier # Csharp
+          fantomas # Fsharp lang
           nixfmt # nix formater
           lua-language-server
           nil # I would go for nixd but lazy chooses this one idk
@@ -201,8 +200,8 @@ let
       # this section is for environmentVariables that should be available
       # at RUN TIME for plugins. Will be available to path within neovim terminal
       environmentVariables = {
-        test = {
-          CATTESTVAR = "It worked!";
+        general = {
+          CODELLDB_BIN = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb";
         };
       };
 

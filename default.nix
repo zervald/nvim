@@ -78,6 +78,7 @@ let
           universal-ctags
 
           ## Debuggers
+          netcoredbg # .NET / Csharp
           vscode-extensions.vadimcn.vscode-lldb # c/cpp debugger
 
           ## lsp, formaters and linters

@@ -1,5 +1,6 @@
 return {
   {
+    -- DAP setup for dotnet
     'mfussenegger/nvim-dap',
     optional = true,
     opts = function()

@@ -97,8 +97,12 @@
               angular-language-server
               asm-lsp # assembly
               clang-tools # clangd lsp
-              csharpier # Csharp
+
+              #csharp-ls # csharp lsp
+              omnisharp-roslyn # csharp lsp
+              csharpier # Csharp formater
               fantomas # Fsharp lang
+
               nixfmt # nix formater
               lua-language-server
               nil # I would go for nixd but lazy chooses this one idk

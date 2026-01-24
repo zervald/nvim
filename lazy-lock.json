@@ -33,6 +33,7 @@
   "omnisharp-extended-lsp.nvim": { "branch": "main", "commit": "a47388e5417e7f1cfa6962cc441a23c4c5fb2151" },
   "perfanno.nvim": { "branch": "master", "commit": "8640d6655f17a79af8de3153af2ce90c03f65e86" },
   "preview.nvim": { "branch": "master", "commit": "627f426502730414ae0dd46b1f117d491e2a38e8" },
+  "roslyn.nvim": { "branch": "main", "commit": "2b9a8366a29b0a2a7e51cac87f3ca6345f617790" },
   "rustaceanvim": { "branch": "master", "commit": "63c744d92f1d7428bc9acc26054331f85891d822" },
   "tailwindcss-colorizer-cmp.nvim": { "branch": "main", "commit": "3d3cd95e4a4135c250faf83dd5ed61b8e5502b86" },
   "venv-selector.nvim": { "branch": "main", "commit": "e56bed0eccc80d64ca2ec176cadd489b1bf4ea7d" }

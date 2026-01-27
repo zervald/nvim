@@ -75,11 +75,13 @@
           # this includes LSPs
           lspsAndRuntimeDeps = with pkgs; {
             general = [
+              ## general nvim deps
               clang
               curl
               fd
               imagemagick
               lua
+              luarocks
               python3Packages.jupytext # jupyter notebook dep
               quarto
               ripgrep
@@ -270,7 +272,6 @@
               (
                 lp: with lp; [
                   magick
-                  luarocks
                 ]
               )
             ];

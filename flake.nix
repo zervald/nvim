@@ -95,6 +95,9 @@
               vscode-extensions.vadimcn.vscode-lldb # c/cpp debugger
               clang-tools # clangd lsp
 
+              ## cmake
+              cmake-lint
+
               ## Angular
               angular-language-server
 

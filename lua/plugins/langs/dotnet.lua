@@ -22,7 +22,7 @@ return {
       --         end
       --     end)
       -- end
-      choose_target = nil,
+      -- choose_target = nil,
 
       -- Optional function that takes the selected target as the only argument.
       -- Returns a boolean of whether it should be ignored to attach to or not
@@ -46,7 +46,7 @@ return {
       -- lock_target = false,
 
       -- If the plugin should silence notifications about initialization
-      silent = true,
+      silent = false,
     },
   },
   {

@@ -20,5 +20,3 @@ vim.opt.clipboard = 'unnamed'
 vim.opt.autochdir = true
 
 vim.opt.spelllang = 'fr'
-
-vim.g.root_spec = { '.git', { 'lsp', 'lua' }, 'cwd' }

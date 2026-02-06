@@ -94,6 +94,6 @@ map('n', 'H', '<cmd>tabprevious<cr>')
 map('n', 'L', '<cmd>tabnext<cr>')
 
 --buffer navigation
-map('n', '<leader><space>', function()
-  Snacks.picker.smart()
-end)
+-- map('n', '<leader><space>', function()
+--   Snacks.picker.smart()
+-- end)

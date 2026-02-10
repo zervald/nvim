@@ -21,4 +21,26 @@ vim.opt.autochdir = true
 
 vim.opt.spelllang = 'fr'
 
-vim.g.root_spec = { '.git', { 'lsp', 'lua' }, 'cwd' }
+-- vim.g.root_spec = { '.git', { 'lsp', 'lua' }, 'cwd' }
+vim.g.root_spec = { 'lsp', { '.git', 'lua' }, 'cwd' }
+
+-- autoformat on save
+-- Autoformat setting
+local set_autoformat = function(pattern, bool_val)
+  vim.api.nvim_create_autocmd({ 'FileType' }, {
+    pattern = pattern,
+    callback = function()
+      vim.b.autoformat = bool_val
+    end,
+  })
+end
+
+-- on windows
+if vim.fn.has 'windows' then
+  vim.o.shell = 'powershell.exe'
+  set_autoformat({ 'cs' }, false)
+end
+
+if vim.g.neovide then
+  vim.g.neovide_scale_factor = 0.9
+end

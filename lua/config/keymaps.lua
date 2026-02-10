@@ -97,3 +97,10 @@ map('n', 'L', '<cmd>tabnext<cr>')
 map('n', '<leader><space>', function()
   Snacks.picker.smart()
 end)
+
+--neovide
+if vim.g.neovide then
+  map({ 'n' }, '<C-+>', ':lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>')
+  map({ 'n' }, '<C-->', ':lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>')
+  map({ 'n' }, '<C-0>', ':lua vim.g.neovide_scale_factor = 1<CR>')
+end

@@ -75,11 +75,13 @@
           # this includes LSPs
           lspsAndRuntimeDeps = with pkgs; {
             general = [
+              ## general nvim deps
               clang
               curl
               fd
               imagemagick
               lua
+              luarocks
               python3Packages.jupytext # jupyter notebook dep
               quarto
               ripgrep
@@ -89,19 +91,33 @@
               tree-sitter
               universal-ctags
 
-              ## Debuggers
-              netcoredbg # .NET / Csharp
+              ## C / CPP
               vscode-extensions.vadimcn.vscode-lldb # c/cpp debugger
-
-              ## lsp, formaters and linters
-              angular-language-server
-              asm-lsp # assembly
               clang-tools # clangd lsp
-              csharpier # Csharp
+
+              ## cmake
+              cmake-lint
+
+              ## Angular
+              angular-language-server
+
+              ## assembly
+              asm-lsp
+
+              # csharp | c# | dotnet | .NET
+              roslyn-ls # csharp lsp
+              csharpier # Csharp formater
               fantomas # Fsharp lang
+              netcoredbg # dotnet dubugger
+
+              ## nix
               nixfmt # nix formater
-              lua-language-server
               nil # I would go for nixd but lazy chooses this one idk
+
+              ## lua
+              lua-language-server
+
+              ## Python
               pyright # TODO: basedpyright # pyright for now
               ruff
 
@@ -259,7 +275,6 @@
               (
                 lp: with lp; [
                   magick
-                  luarocks
                 ]
               )
             ];
@@ -365,7 +380,7 @@
             name = defaultPackageName;
             packages = [ defaultPackage ];
             inputsFrom = [ ];
-            shellHook = '''';
+            shellHook = "";
           };
         };
 

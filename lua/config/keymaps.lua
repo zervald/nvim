@@ -93,11 +93,6 @@ Snacks.toggle.option('conceallevel', { off = 0, on = vim.o.conceallevel > 0 and 
 map('n', 'H', '<cmd>tabprevious<cr>')
 map('n', 'L', '<cmd>tabnext<cr>')
 
---buffer navigation
-map('n', '<leader><space>', function()
-  Snacks.picker.smart()
-end)
-
 --neovide
 if vim.g.neovide then
   map({ 'n' }, '<C-+>', ':lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>')

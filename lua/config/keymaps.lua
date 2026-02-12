@@ -14,10 +14,6 @@ function QuickTerm(cmd, wait)
   local enter = vim.api.nvim_replace_termcodes('<CR>', true, true, true)
   local root = LazyVim.root.get()
 
-  if root == '/home/zervald' then
-    root = vim.fn.expand '%:h'
-  end
-
   wait = wait or false
   cmd = cmd or ''
   if wait == false then

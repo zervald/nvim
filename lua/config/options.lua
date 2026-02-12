@@ -36,7 +36,9 @@ local set_autoformat = function(pattern, bool_val)
 end
 
 -- on windows
-if vim.fn.has 'windows' then
+if vim.fn.has 'wsl' then
+  vim.o.shell = 'fish'
+elseif vim.fn.has 'win32' or 'win64' then
   vim.o.shell = 'powershell.exe'
   set_autoformat({ 'cs' }, false)
 end

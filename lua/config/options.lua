@@ -17,7 +17,7 @@ vim.opt.clipboard = 'unnamed'
 -- vim.g.mapleader = "<space>"
 -- vim.g.mapleader = " "
 
-vim.opt.autochdir = true
+vim.opt.autochdir = false
 
 vim.opt.spelllang = 'fr'
 

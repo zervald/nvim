@@ -121,6 +121,9 @@
               pyright # TODO: basedpyright # pyright for now
               ruff
 
+              ## zig
+              zls
+
               ## lazygit
               # Apparently lazygit when launched via snacks cant create its own config file
               # but we can add one from nix!

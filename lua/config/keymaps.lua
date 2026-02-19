@@ -84,11 +84,6 @@ map('n', '<leader>jr', '<cmd>!just run<cr>')
 --change Toggle conceallevel
 Snacks.toggle.option('conceallevel', { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 1, name = 'Conceal Level' }):map '<leader>uc'
 
---tab navigation
---since bufferline disabled
-map('n', 'H', '<cmd>tabprevious<cr>')
-map('n', 'L', '<cmd>tabnext<cr>')
-
 --neovide
 if vim.g.neovide then
   map({ 'n' }, '<C-+>', ':lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>')

@@ -1,4 +1,4 @@
--- === Functions ===
+-- === Variables ===
 -- Autoformat on save setting
 local set_autoformat = function(pattern, bool_val)
   vim.api.nvim_create_autocmd({ 'FileType' }, {
@@ -9,6 +9,7 @@ local set_autoformat = function(pattern, bool_val)
   })
 end
 
+-- === Options ===
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/vim.options.lua
 -- Add any additional vim.options here
@@ -38,9 +39,11 @@ vim.g.root_spec = { 'lsp', { '.git', 'lua' }, 'cwd' }
 -- on windows
 if vim.fn.has 'wsl' then
   vim.o.shell = 'fish'
+  set_autoformat({ 'cpp' }, false)
 elseif vim.fn.has 'win32' or 'win64' then
   vim.o.shell = 'powershell.exe'
   set_autoformat({ 'cpp' }, false)
+  set_autoformat({ 'cs' }, false)
 end
 
 if vim.g.neovide then

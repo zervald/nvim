@@ -1,3 +1,14 @@
+-- === Functions ===
+-- Autoformat on save setting
+local set_autoformat = function(pattern, bool_val)
+  vim.api.nvim_create_autocmd({ 'FileType' }, {
+    pattern = pattern,
+    callback = function()
+      vim.b.autoformat = bool_val
+    end,
+  })
+end
+
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/vim.options.lua
 -- Add any additional vim.options here
@@ -24,23 +35,12 @@ vim.opt.spelllang = 'fr'
 -- vim.g.root_spec = { '.git', { 'lsp', 'lua' }, 'cwd' }
 vim.g.root_spec = { 'lsp', { '.git', 'lua' }, 'cwd' }
 
--- autoformat on save
--- Autoformat setting
-local set_autoformat = function(pattern, bool_val)
-  vim.api.nvim_create_autocmd({ 'FileType' }, {
-    pattern = pattern,
-    callback = function()
-      vim.b.autoformat = bool_val
-    end,
-  })
-end
-
 -- on windows
 if vim.fn.has 'wsl' then
   vim.o.shell = 'fish'
 elseif vim.fn.has 'win32' or 'win64' then
   vim.o.shell = 'powershell.exe'
-  set_autoformat({ 'cs' }, false)
+  set_autoformat({ 'cpp' }, false)
 end
 
 if vim.g.neovide then

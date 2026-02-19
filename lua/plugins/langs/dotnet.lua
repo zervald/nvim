@@ -50,6 +50,21 @@ return {
     },
   },
   {
+
+    'neovim/nvim-lspconfig',
+    opts = {
+      servers = {
+        rosalyn = {
+          settings = {
+            ['csharp|background_analysis'] = {
+              dotnet_compiler_diagnostics_scope = 'fullSolution',
+            },
+          },
+        },
+      },
+    },
+  },
+  {
     -- DAP setup for dotnet
     'mfussenegger/nvim-dap',
     optional = true,

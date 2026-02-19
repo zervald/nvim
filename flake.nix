@@ -106,7 +106,6 @@
 
               # csharp | c# | dotnet | .NET
               roslyn-ls # csharp lsp
-              csharpier # Csharp formater
               fantomas # Fsharp lang
               netcoredbg # dotnet dubugger
 

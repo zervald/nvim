@@ -1,25 +1,25 @@
 return {
   'ThePrimeagen/harpoon',
   branch = 'harpoon2',
-  opts = {
-    menu = {
-      width = vim.api.nvim_win_get_width(0) - 4,
-    },
-    default = {
-      get_root_dir = function()
-        local cwd = vim.fn.cwd()
-        local root = vim.fn.system 'git rev-parse --show-toplevel'
-        -- local root = LazyVim.root.get()
-        if vim.v.shell_error == 0 and root ~= nil then
-          return string.gsub(root, '\n', '')
-        end
-        return cwd
-      end,
-    },
-    settings = {
-      save_on_toggle = true,
-    },
-  },
+  -- opts = {
+  -- menu = {
+  --   width = vim.api.nvim_win_get_width(0) - 4,
+  -- },
+  -- default = {
+  --   get_root_dir = function()
+  --     local cwd = vim.fn.cwd()
+  --     local root = vim.fn.system 'git rev-parse --show-toplevel'
+  --     -- local root = LazyVim.root.get()
+  --     if vim.v.shell_error == 0 and root ~= nil then
+  --       return string.gsub(root, '\n', '')
+  --     end
+  --     return cwd
+  --   end,
+  -- },
+  --   settings = {
+  --     save_on_toggle = true,
+  --   },
+  -- },
   keys = function()
     local keys = {
       {

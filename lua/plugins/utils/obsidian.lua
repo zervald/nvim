@@ -31,7 +31,7 @@ return {
       workspaces = {
         {
           name = 'personal',
-          path = '~/Documents/notes',
+          path = '~/Documents/obsidian-my-notes',
         },
       },
       templates = {

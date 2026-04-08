@@ -33,6 +33,12 @@ return {
           name = 'personal',
           path = '~/Documents/obsidian-my-notes',
         },
+        {
+          name = 'buf-parent',
+          path = function()
+            return assert(vim.fs.dirname(vim.api.nvim_buf_get_name(0)))
+          end,
+        },
       },
       templates = {
         folder = 'res/templates',

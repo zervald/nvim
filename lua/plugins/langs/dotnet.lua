@@ -49,20 +49,20 @@ return {
       silent = false,
     },
   },
-  {
-    'neovim/nvim-lspconfig',
-    opts = {
-      servers = {
-        roslyn = { -- roslyn, not roslyn_ls! roslyn.nvim provide it's own server named roslyn
-          settings = {
-            ['csharp|background_analysis'] = {
-              dotnet_compiler_diagnostics_scope = 'fullSolution',
-            },
-          },
-        },
-      },
-    },
-  },
+  -- {
+  --   'neovim/nvim-lspconfig',
+  --   opts = {
+  --     servers = {
+  --       roslyn = { -- roslyn, not roslyn_ls! roslyn.nvim provide it's own server named roslyn
+  --         settings = {
+  --           ['csharp|background_analysis'] = {
+  --             dotnet_compiler_diagnostics_scope = 'fullSolution',
+  --           },
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
   {
     -- DAP setup for dotnet
     'mfussenegger/nvim-dap',

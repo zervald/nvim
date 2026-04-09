@@ -113,7 +113,9 @@
 
               ## nix
               nixfmt # nix formater
-              nil # I would go for nixd but lazy chooses this one idk
+              nil # nil and nixd don't overlap
+              nixd
+              statix
 
               ## lua
               lua-language-server

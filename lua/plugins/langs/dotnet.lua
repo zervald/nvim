@@ -9,7 +9,7 @@ return {
       -- - "auto": Does nothing for filewatching, leaving everything as default
       -- - "roslyn": Turns off neovim filewatching which will make roslyn do the filewatching
       -- - "off": Hack to turn off all filewatching. (Can be used if you notice performance issues)
-      -- filewatching = "auto",
+      filewatching = 'auto',
 
       -- Optional function that takes an array of targets as the only argument. Return the target you
       -- want to use. If it returns `nil`, then it falls back to guessing the target like normal
@@ -22,7 +22,7 @@ return {
       --         end
       --     end)
       -- end
-      -- choose_target = nil,
+      choose_target = nil,
 
       -- Optional function that takes the selected target as the only argument.
       -- Returns a boolean of whether it should be ignored to attach to or not
@@ -33,7 +33,7 @@ return {
       -- ignore_target = function(target)
       --     return string.match(target, "Foo.sln") ~= nil
       -- end
-      -- ignore_target = nil,
+      ignore_target = nil,
 
       -- Whether or not to look for solution files in the child of the (root).
       -- Set this to true if you have some projects that are not a child of the
@@ -50,11 +50,10 @@ return {
     },
   },
   {
-
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
-        rosalyn = {
+        roslyn_ls = {
           settings = {
             ['csharp|background_analysis'] = {
               dotnet_compiler_diagnostics_scope = 'fullSolution',

@@ -1,13 +1,14 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
---
+
+local Snacks = require 'snacks'
+local LazyVim = require 'lazyvim'
 local map = vim.keymap.set
 ---@diagnostic disable-next-line: unused-local
 local unmap = vim.keymap.del
-local Snacks = require 'snacks'
 
---- -- QUICKTERM
+-- -- QUICKTERM
 ---@param cmd? string
 ---@param wait? boolean
 function QuickTerm(cmd, wait)
@@ -27,7 +28,7 @@ function QuickTerm(cmd, wait)
   vim.fn.feedkeys(cmd)
 end
 
--- cd pwd of buffer with "%%"
+-- abreviation: %% -> buffer parent dir
 local fn = vim.fn
 map('c', '%%', function()
   if fn.getcmdtype() == ':' then
@@ -40,7 +41,7 @@ end, { expr = true })
 -- leader p change pwd
 map('n', '<leader>p', function()
   vim.cmd 'cd %:h/'
-end, { desc = 'Change pwd to current buffer directory' })
+end, { desc = 'Set pwd buffer parent directory' })
 
 -- Macro
 map('n', 'Q', 'q', { desc = 'Record macro' })
@@ -66,12 +67,16 @@ map('n', '<leader>ul', function()
 end, { desc = 'Change spelling language' })
 
 -- switch Trouble diagnostic
-map('n', '<leader>xx', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>')
-map('n', '<leader>xX', '<cmd>Trouble diagnostics toggle<cr>')
+-- map('n', '<leader>xx', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>')
+-- map('n', '<leader>xX', '<cmd>Trouble diagnostics toggle<cr>')
 
 -- Ctrl - u/d with centering
 map('n', '<C-u>', '<C-u>zz')
 map('n', '<C-d>', '<C-d>zz')
+
+-- H, L cycle tabs
+map('n', 'H', '<cmd>tabprevious<cr>')
+map('n', 'L', '<cmd>tabnext<cr>')
 
 -- mark with S-M
 -- goto mark with M

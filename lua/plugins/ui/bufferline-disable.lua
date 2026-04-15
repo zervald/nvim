@@ -1,10 +1,4 @@
 return {
   'akinsho/bufferline.nvim',
   enabled = false,
-  keys = {
-    --tab navigation
-    --since bufferline disabled
-    { 'n', 'H', '<cmd>tabprevious<cr>' },
-    { 'n', 'L', '<cmd>tabnext<cr>' },
-  },
 }

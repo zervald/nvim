@@ -1,5 +1,6 @@
 return {
-  "folke/snacks.nvim",
+  'folke/snacks.nvim',
+  optional = true,
   -- opts = function(_, opts)
   --   local listFirstHalf = vim.list_slice(opts.config.center, 1, 6)
   --   local listLastHalf = vim.list_slice(opts.config.center, 8)

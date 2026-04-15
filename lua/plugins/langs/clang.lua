@@ -1,6 +1,5 @@
 return {
   {
-
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
@@ -22,6 +21,7 @@ return {
     'mfussenegger/nvim-dap',
     -- NOTE: Ensure C/C++ debugger is installed
     -- dependencies = { "mason-org/mason.nvim", optional = true, opts = { ensure_installed = { "codelldb" } }, },
+    optional = true,
     opts = function()
       local dap = require 'dap'
       dap.adapters.codelldb = {

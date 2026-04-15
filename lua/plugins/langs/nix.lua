@@ -1,11 +1,8 @@
 return {
   'neovim/nvim-lspconfig',
-  ---@module "lspconfig"
   opts = {
     servers = {
-      ---@type vim.lsp.Config
       nil_ls = {
-        ---@type lspconfig.settings.nil_ls
         settings = {
           ['nil'] = {
             formatting = {
@@ -52,14 +49,14 @@ return {
                 -- - false: Do not archive. Only load inputs that are already on disk.
                 -- Type: null | boolean
                 -- Default: nil
-                autoArchive = nil,
+                autoArchive = true,
                 -- Whether to auto-eval flake inputs.
                 -- The evaluation result is used to improve completion, but may cost
                 -- lots of time and/or memory.
                 --
                 -- Type: boolean
                 -- Default: false
-                autoEvalInputs = true,
+                autoEvalInputs = false,
                 -- The input name of nixpkgs for NixOS options evaluation.
                 --
                 -- The options hierarchy is used to improve completion, but may cost
@@ -75,6 +72,30 @@ return {
             },
           },
         },
+      },
+      nixd = {
+        settings = {
+          nixpkgs = {
+            -- For flake.
+            -- This expression will be interpreted as "nixpkgs" toplevel
+            -- Nixd provides package, lib completion/information from it.
+            -- Resource Usage: Entries are lazily evaluated, entire nixpkgs takes 200~300MB for just "names".
+            -- Package documentation, versions, are evaluated by-need.
+            expr = 'import (builtins.getFlake(toString ./.)).inputs.nixpkgs { }',
+          },
+          formatting = {
+            command = { 'nixfmt' }, -- or nixfmt or nixpkgs-fmt
+          },
+        },
+      },
+    },
+  },
+  {
+    'stevearc/conform.nvim',
+    optional = true,
+    opts = {
+      formatters_by_ft = {
+        nix = { 'nixfmt' },
       },
     },
   },

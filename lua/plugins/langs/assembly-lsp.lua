@@ -1,40 +1,41 @@
 local path = nil
-local enter = vim.api.nvim_replace_termcodes("<CR>", true, true, true)
+local enter = vim.api.nvim_replace_termcodes('<CR>', true, true, true)
 local saveBuffPath = function()
-  path = vim.fn.expand("%:p")
+  path = vim.fn.expand '%:p'
 end
 local rarsCMD = function()
-  return { "rars", "rv64", path, enter }
+  return { 'rars', 'rv64', path, enter }
 end
+local Snacks = require 'snacks'
 
 return {
-  "neovim/nvim-lspconfig",
+  'neovim/nvim-lspconfig',
   opts = {
     servers = {
       asm_lsp = {
-        mason = false,
-        filetypes = { "asm", "vmasm", "s", "S" },
+        mason = require('nixCatsUtils').lazyAdd(true, false),
+        filetypes = { 'asm', 'vmasm', 's', 'S' },
         keys = {
           {
-            "<leader>CC",
+            '<leader>CC',
             function()
               vim.cmd.wa()
               Snacks.terminal.open()
-              vim.cmd("startinsert")
-              vim.fn.feedkeys("corrige.py " .. enter)
+              vim.cmd 'startinsert'
+              vim.fn.feedkeys('corrige.py ' .. enter)
             end,
-            desc = "Run correction in terminal",
+            desc = 'Run correction in terminal',
           },
           {
-            "<leader>CF",
+            '<leader>CF',
             function()
               vim.cmd.wa()
               saveBuffPath()
               Snacks.terminal.open()
-              vim.cmd("startinsert")
-              vim.fn.feedkeys(table.concat(rarsCMD(), " "))
+              vim.cmd 'startinsert'
+              vim.fn.feedkeys(table.concat(rarsCMD(), ' '))
             end,
-            desc = "Run in floating terminal",
+            desc = 'Run in floating terminal',
           },
         },
       },

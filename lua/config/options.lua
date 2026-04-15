@@ -22,6 +22,7 @@ vim.opt.expandtab = true -- Use spaces instead of tabs
 
 vim.opt.conceallevel = 1
 vim.opt.breakindent = true
+vim.opt.colorcolumn = '100'
 
 vim.opt.clipboard = 'unnamed'
 

@@ -1,6 +1,6 @@
 return {
   'folke/snacks.nvim',
-  ---@type snacks.Config
+  ---@type Snacks.Config
   opts = {
     zen = {
       -- You can add any `Snacks.toggle` id here.
@@ -9,6 +9,7 @@ return {
       win = {
         backdrop = {
           transparent = false,
+          blend = 90,
         },
       },
       ---@type table<string, boolean>

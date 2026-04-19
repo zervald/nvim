@@ -20,6 +20,9 @@ return {
         -- diagnostics = false,
         -- inlay_hints = false,
       },
+      show = {
+        statusline = true,
+      },
     },
   },
 } ---@class snacks.zen.Config

@@ -1,5 +1,6 @@
 local prefix = '<leader>o'
-local date_format = '%d-%b-%Y'
+local date_format = 'YYYY-MM-DD'
+local Snacks = require 'snacks'
 
 return {
   {
@@ -44,6 +45,25 @@ return {
         folder = 'res/templates',
         date_format = date_format,
         time_format = '%H:%M',
+        substitutions = {
+          date = function(_, suffix)
+            local format = suffix or Obsidian.opts.templates.date_format
+            return require('obsidian.util').format_date(os.time(), format)
+          end,
+          time = function(_, suffix)
+            local format = suffix or Obsidian.opts.templates.time_format
+            return require('obsidian.util').format_date(os.time(), format)
+          end,
+          title = function(ctx)
+            return ctx.partial_note and ctx.partial_note:display_name()
+          end,
+          id = function(ctx)
+            return ctx.partial_note and ctx.partial_note.id
+          end,
+          path = function(ctx)
+            return ctx.partial_note and tostring(ctx.partial_note.path)
+          end,
+        },
       },
       daily_notes = {
         folder = 'daily',

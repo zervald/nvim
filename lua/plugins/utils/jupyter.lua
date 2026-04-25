@@ -63,33 +63,8 @@ return {
     'benlubas/molten-nvim',
     -- version = '^1.0.0', -- use version <2.0.0 to avoid breaking changes
     dependencies = { 'folke/snacks.nvim' },
-    ft = { 'markdown', 'quarto' },
+    ft = { 'quarto', 'markdown' },
     build = ':UpdateRemotePlugins',
-    keys = {
-      -- stylua: ignore start
-      -- { "n", "<space>rr", ":MoltenReevaluateCell<CR>", { desc = "re-eval cell", silent = true } },
-      -- { "n", "<space>ro", ":MoltenEvaluateOperator<CR>", { desc = "evaluate operator", silent = true } },
-      -- { "n", "<space>rl", ":MoltenEvaluateLine<CR>", { silent = true, desc = "evaluate line" } },
-      -- { "v", "<space>r", ":<C-u>MoltenEvaluateVisual<CR>gv", { desc = "execute visual selection", silent = true } },
-      { "<leader>ri", ":MoltenInterrupt<CR>",             mode = "n", desc = "interrupt runner", silent = true },
-      { "<leader>mm", "zt :noautocmd MoltenEnterOutput<CR>", mode = "n", desc = "open output window", silent = true  },
-      { "<leader>mq", ":MoltenHideOutput<CR>",            mode = "n", desc = "close output window", silent = true  },
-      { "<leader>md", ":MoltenDelete<CR>",                mode = "n", desc = "delete Molten cell", silent = true  },
-      { "<leader>ms", ":MoltenImagePopup<CR>",            mode = "n", desc = "Show images in exteral viewer", silent = true  },
-      { "<leader>mi", function()
-        local venv = os.getenv("DIRENV_DIR") or os.getenv("CONDA_PREFIX") or os.getenv("VIRTUAL_ENV")
-        if venv ~= nil then
-          -- in the form of /home/user/.virtualenvs/VENV_NAME
-          venv = string.match(venv, "/.+/(.+)")
-          print(venv)
-          vim.cmd(("MoltenInit %s"):format(venv))
-        else
-          vim.cmd("MoltenInit")
-        end
-      end,
-        mode = "n", ft = {"markdown", "quarto"},desc = "Initialize the plugin", silent = true  },
-      -- stylua: ignore end
-    },
     init = function()
       -- Output window height (MoltenEnterOutput)
       -- vim.g.molten_output_win_max_height = 30
@@ -121,20 +96,29 @@ return {
 
       vim.g.molten_enter_output_behavior = 'open_and_enter'
 
-      -- stylua: ignore start
-      -- vim.keymap.set("n", "<leader>ro", ":MoltenEvaluateOperator<CR>", { silent = true, desc = "evaluate operator" })
-      -- vim.keymap.set("n", "<leader>rl", ":MoltenEvaluateLine<CR>", { silent = true, desc = "evaluate line" })
-      -- vim.keymap.set("n", "<leader>rr", ":MoltenReevaluateCell<CR>", { silent = true, desc = "re-evaluate cell" })
-      -- vim.keymap.set("n", "<leader>ri", ":MoltenInterrupt<CR>", { silent = true, desc = "interrupt" })
-      -- vim.keymap.set("v", "<leader>r", ":<C-u>MoltenEvaluateVisual<CR>gv", { silent = true, desc = "evaluate visual selection" })
-      -- vim.keymap.set("n", "<leader>mi", ":MoltenInit<CR>", { silent = true, desc = "Initialize the plugin" })
-      -- vim.keymap.set("n", "<leader>md", ":MoltenDelete<CR>", { silent = true, desc = "molten delete cell" })
-      -- vim.keymap.set("n", "<leader>mh", ":MoltenHideOutput<CR>", { silent = true, desc = "hide output" })
-      -- vim.keymap.set("n", "<leader>ms", ":noautocmd MoltenEnterOutput<CR>", { silent = true, desc = "show/enter output" })
-
+      -- must
+      vim.keymap.set('n', '<leader>me', ':MoltenEvaluateOperator<CR>', { desc = 'evaluate operator', silent = true })
+      vim.keymap.set('n', '<leader>mm', 'zt :noautocmd MoltenEnterOutput<CR>', { desc = 'open output window', silent = true })
+      vim.keymap.set('v', '<leader>me', ':<C-u>MoltenEvaluateVisual<CR>gv', { desc = 'execute visual selection', silent = true })
+      vim.keymap.set('n', '<leader>mc', ':MoltenInterrupt<CR>', { desc = 'interrupt runner', silent = true })
+      vim.keymap.set('n', '<leader>mr', ':MoltenReevaluateCell<CR>', { desc = 're-eval cell', silent = true })
+      vim.keymap.set('n', '<leader>mq', ':MoltenHideOutput<CR>', { desc = 'close output window', silent = true })
+      vim.keymap.set('n', '<leader>md', ':MoltenDelete<CR>', { desc = 'delete Molten cell', silent = true })
+      vim.keymap.set('n', '<leader>ms', ':MoltenImagePopup<CR>', { desc = 'Show images in exteral viewer', silent = true })
+      vim.keymap.set('n', '<leader>mh', ':MoltenHideOutput<CR>', { desc = 'close output window', silent = true })
       -- if you work with html outputs:
-      -- vim.keymap.set( "n", "<localleader>mx", ":MoltenOpenInBrowser<CR>", { desc = "open output in browser", silent = true })
-      -- stylua: ignore end
+      vim.keymap.set('n', '<leader>mx', ':MoltenOpenInBrowser<CR>', { desc = 'open output in browser', silent = true })
+      vim.keymap.set('n', '<leader>mi', function()
+        local venv = os.getenv 'DIRENV_DIR' or os.getenv 'CONDA_PREFIX' or os.getenv 'VIRTUAL_ENV'
+        if venv ~= nil then
+          -- in the form of /home/user/.virtualenvs/VENV_NAME
+          venv = string.match(venv, '/.+/(.+)')
+          print(venv)
+          vim.cmd(('MoltenInit %s'):format(venv))
+        else
+          vim.cmd 'MoltenInit'
+        end
+      end, { desc = 'Initialize the plugin', silent = true })
     end,
   },
   -- TODO: Treesitter setup https://github.com/benlubas/molten-nvim/blob/main/docs/Notebook-Setup.md#treesitter-text-objects

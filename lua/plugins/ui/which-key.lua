@@ -1,9 +1,10 @@
 return {
-  "folke/which-key.nvim",
+  'folke/which-key.nvim',
   opts = {
-    preset = "modern",
+    preset = 'modern',
     spec = {
-      { "<leader>r", group = "+run" },
+      { '<leader>r', group = '+runner', icon = '▶' },
+      { '<leader>m', group = '+Molten', icon = '' },
     },
   },
 }

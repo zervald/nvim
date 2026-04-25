@@ -83,9 +83,6 @@ map('n', 'L', '<cmd>tabnext<cr>')
 map('n', 'M', 'm')
 map('n', 'm', "'")
 
--- just run
-map('n', '<leader>jr', '<cmd>!just run<cr>')
-
 --change Toggle conceallevel
 Snacks.toggle.option('conceallevel', { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 1, name = 'Conceal Level' }):map '<leader>uc'
 

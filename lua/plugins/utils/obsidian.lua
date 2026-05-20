@@ -2,6 +2,43 @@ local prefix = '<leader>o'
 local date_format = 'YYYY-MM-DD'
 local Snacks = require 'snacks'
 
+local template = function(folder)
+  return {
+    folder = folder,
+    date_format = date_format,
+    time_format = '%H:%M',
+    substitutions = {
+      date = function(_, suffix)
+        local format = suffix or Obsidian.opts.templates.date_format
+        return require('obsidian.util').format_date(os.time(), format)
+      end,
+      time = function(_, suffix)
+        local format = suffix or Obsidian.opts.templates.time_format
+        return require('obsidian.util').format_date(os.time(), format)
+      end,
+      title = function(ctx)
+        return ctx.partial_note and ctx.partial_note:display_name()
+      end,
+      id = function(ctx)
+        return ctx.partial_note and ctx.partial_note.id
+      end,
+      path = function(ctx)
+        return ctx.partial_note and tostring(ctx.partial_note.path)
+      end,
+    },
+  }
+end
+
+local daily = function(folder)
+  return {
+    folder = folder,
+    date_format = date_format,
+    alias_format = nil,
+    default_tags = { 'daily' },
+    workdays_only = false,
+  }
+end
+
 return {
   {
     'obsidian-nvim/obsidian.nvim',
@@ -39,39 +76,22 @@ return {
           path = function()
             return assert(vim.fs.dirname(vim.api.nvim_buf_get_name(0)))
           end,
+          overrides = {
+            -- Set these to vim.NIL to prevent the plugin from creating them
+            daily_notes = daily(vim.NIL),
+            new_notes_location = 'current_dir',
+            templates = template(vim.NIL),
+            -- disable_frontmatter = true, -- Optional: stops it from adding YAML to random files
+          },
         },
       },
       templates = {
         folder = 'res/templates',
         date_format = date_format,
         time_format = '%H:%M',
-        substitutions = {
-          date = function(_, suffix)
-            local format = suffix or Obsidian.opts.templates.date_format
-            return require('obsidian.util').format_date(os.time(), format)
-          end,
-          time = function(_, suffix)
-            local format = suffix or Obsidian.opts.templates.time_format
-            return require('obsidian.util').format_date(os.time(), format)
-          end,
-          title = function(ctx)
-            return ctx.partial_note and ctx.partial_note:display_name()
-          end,
-          id = function(ctx)
-            return ctx.partial_note and ctx.partial_note.id
-          end,
-          path = function(ctx)
-            return ctx.partial_note and tostring(ctx.partial_note.path)
-          end,
-        },
+        substitutions = template 'res/template',
       },
-      daily_notes = {
-        folder = 'daily',
-        date_format = date_format,
-        alias_format = nil,
-        default_tags = { 'daily' },
-        workdays_only = false,
-      },
+      daily_notes = daily 'daily',
       picker = {
         name = 'snacks.pick',
         note_mappings = {

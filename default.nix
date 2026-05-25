@@ -115,10 +115,6 @@ let
           pyright # TODO: basedpyright # pyright for now
           ruff
 
-          #Java
-          jdk21_headless
-          jdt-language-server
-
           ## zig
           zls
 

@@ -81,7 +81,7 @@ return {
             daily_notes = daily(vim.NIL),
             new_notes_location = 'current_dir',
             templates = template(vim.NIL),
-            -- disable_frontmatter = true, -- Optional: stops it from adding YAML to random files
+            frontmatter = { enabled = false }, -- Optional: stops it from adding YAML to random files
           },
         },
       },

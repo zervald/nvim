@@ -140,7 +140,7 @@ let
           LazyVim
 
           bufferline-nvim
-          conform-nvim
+          # conform-nvim
           flash-nvim
           friendly-snippets
           gitsigns-nvim

@@ -92,3 +92,24 @@ if vim.g.neovide then
   map({ 'n' }, '<C-->', ':lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>')
   map({ 'n' }, '<C-0>', ':lua vim.g.neovide_scale_factor = 1<CR>')
 end
+
+-- from diagnostic to quickfix list
+vim.keymap.set('n', '<leader>xd', function()
+  local diagnostics = vim.diagnostic.get(0)
+  local qflist = {}
+  for _, diagnostic in ipairs(diagnostics) do
+    table.insert(qflist, {
+      bufnr = diagnostic.bufnr,
+      lnum = diagnostic.lnum + 1,
+      col = diagnostic.col + 1,
+      text = diagnostic.message,
+      type = diagnostic.severity == vim.diagnostic.severity.ERROR and 'E' or 'W',
+    })
+  end
+  vim.fn.setqflist(qflist)
+end, { desc = 'Send Diagnostics To QF List' })
+
+-- clear qflist
+vim.keymap.set('n', '<leader>xc', function()
+  vim.fn.setqflist {}
+end, { desc = 'Clear quickfix list' })

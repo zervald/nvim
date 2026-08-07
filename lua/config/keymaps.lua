@@ -8,25 +8,13 @@ local map = vim.keymap.set
 ---@diagnostic disable-next-line: unused-local
 local unmap = vim.keymap.del
 
--- -- QUICKTERM
----@param cmd? string
----@param wait? boolean
-function QuickTerm(cmd, wait)
-  local enter = vim.api.nvim_replace_termcodes('<CR>', true, true, true)
-  local root = LazyVim.root.get()
+-- Terminal
+map({ 'n', 't' }, '<M-#>', function()
+  Snacks.terminal.toggle()
+end)
 
-  wait = wait or false
-  cmd = cmd or ''
-  if wait == false then
-    cmd = cmd .. enter
-  end
-
-  vim.cmd.wa()
-  vim.cmd('cd ' .. root)
-  Snacks.terminal.open(nil)
-  vim.cmd.startinsert()
-  vim.fn.feedkeys(cmd)
-end
+-- leave TERMINAL mode (to NORMAL mode)
+-- map('t', '<esc><esc>', '<C-\\><C-n>')
 
 -- abreviation: %% -> buffer parent dir
 local fn = vim.fn
@@ -47,14 +35,6 @@ end, { desc = 'Set pwd buffer parent directory' })
 map('n', 'Q', 'q', { desc = 'Record macro' })
 map('n', 'q', '')
 
---Terminal
-map({ 'n', 't' }, '<M-#>', function()
-  Snacks.terminal.toggle()
-end)
-
--- esc terminal
-map('t', '<esc><esc>', '<C-\\><C-n>')
-
 -- Spelling lang
 unmap('n', '<leader>ul')
 map('n', '<leader>ul', function()
@@ -67,8 +47,8 @@ map('n', '<leader>ul', function()
 end, { desc = 'Change spelling language' })
 
 -- switch Trouble diagnostic
--- map('n', '<leader>xx', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>')
--- map('n', '<leader>xX', '<cmd>Trouble diagnostics toggle<cr>')
+map('n', '<leader>xx', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', { desc = 'Diagnostics (Buffer)' })
+map('n', '<leader>xX', '<cmd>Trouble diagnostics toggle<cr>', { desc = 'Diagnostics (All)' })
 
 -- Ctrl - u/d with centering
 map('n', '<C-u>', '<C-u>zz')

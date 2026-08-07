@@ -2,7 +2,26 @@ return {
   {
     'neovim/nvim-lspconfig',
     optional = true,
+    -- init_options = {
+    --   settings = {
+    --     java = {
+    --       import = {
+    --         gradle = {
+    --           enabled = false,
+    --         },
+    --         maven = {
+    --           enabled = false,
+    --         },
+    --       },
+    --     },
+    --   },
+    -- },
     opts = {
+      setup = {
+        jdtls = function()
+          return true -- avoid duplicate server
+        end,
+      },
       servers = {
         jdtls = {
           handlers = {

@@ -151,7 +151,7 @@ let
           molten-nvim
           noice-nvim
           nui-nvim
-          nvim-cmp
+          # nvim-cmp
           nvim-lint
           nvim-lspconfig
           nvim-ts-autotag

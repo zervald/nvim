@@ -1,6 +1,7 @@
 local cmp = require 'cmp'
 return {
   'hrsh7th/nvim-cmp',
+  optional = true,
   dependencies = {
     'lukas-reineke/cmp-under-comparator',
   },

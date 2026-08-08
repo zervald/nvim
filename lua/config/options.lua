@@ -14,6 +14,8 @@ end
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/vim.options.lua
 -- Add any additional vim.options here
 
+vim.o.winborder = 'rounded'
+
 -- Indentation
 vim.opt.expandtab = true -- Use spaces instead of tabs
 -- vim.opt.tabstop = 4 -- Number of spaces tabs count for

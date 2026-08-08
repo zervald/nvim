@@ -13,19 +13,20 @@ return {
   opts = {
     servers = {
       asm_lsp = {
+        enabled = false,
         mason = require('nixCatsUtils').lazyAdd(true, false),
         filetypes = { 'asm', 'vmasm', 's', 'S' },
         keys = {
-          {
-            '<leader>CC',
-            function()
-              vim.cmd.wa()
-              Snacks.terminal.open()
-              vim.cmd 'startinsert'
-              vim.fn.feedkeys('corrige.py ' .. enter)
-            end,
-            desc = 'Run correction in terminal',
-          },
+          -- {
+          --   '<leader>CC',
+          --   function()
+          --     vim.cmd.wa()
+          --     Snacks.terminal.open()
+          --     vim.cmd 'startinsert'
+          --     vim.fn.feedkeys('corrige.py ' .. enter)
+          --   end,
+          --   desc = 'Run correction in terminal',
+          -- },
           {
             '<leader>CF',
             function()

@@ -3,7 +3,7 @@ return {
   opts = {
     servers = {
       ocamllsp = {
-        mason = require('nixCatsUtils').lazyAdd(true, false),
+        mason = false,
       },
     },
   },

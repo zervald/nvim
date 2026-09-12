@@ -5,7 +5,7 @@ return {
       servers = {
         clangd = {
           cmd = {
-            'clangd',
+            'clangd', --dez nuts
             '--background-index',
             '--clang-tidy',
             '--completion-style=detailed',

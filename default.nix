@@ -143,6 +143,7 @@ let
           # conform-nvim
           flash-nvim
           friendly-snippets
+          roslyn-nvim
           gitsigns-nvim
           grug-far-nvim
           image-nvim

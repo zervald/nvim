@@ -99,8 +99,9 @@ let
           vscode-json-languageserver
 
           # csharp | c# | dotnet | .NET
-          roslyn-ls # lsp
-          # csharp-ls # lsp
+          roslyn
+          # roslyn-ls # lsp
+          csharp-ls # lsp
           csharpier # csharp formatter
           fantomas # Fsharp lang
           netcoredbg # dotnet dubugger
@@ -143,7 +144,6 @@ let
           # conform-nvim
           flash-nvim
           friendly-snippets
-          roslyn-nvim
           gitsigns-nvim
           grug-far-nvim
           image-nvim

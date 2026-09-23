@@ -100,7 +100,7 @@ let
 
           # csharp | c# | dotnet | .NET
           roslyn
-          # roslyn-ls # lsp
+          roslyn-ls # lsp
           csharp-ls # lsp
           csharpier # csharp formatter
           fantomas # Fsharp lang
@@ -157,6 +157,7 @@ let
           nvim-lspconfig
           nvim-ts-autotag
           nvim-web-devicons
+          roslyn-nvim
           persistence-nvim
           plenary-nvim
           quarto-nvim

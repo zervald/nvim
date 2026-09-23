@@ -59,13 +59,13 @@ return {
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
-        roslyn_ls = { -- roslyn for roslyn.nvim / roslyn_ls for nvim-lspconfig
-          settings = {
-            --   ['csharp|background_analysis'] = {
-            -- dotnet_compiler_diagnostics_scope = 'fullSolution',
-            -- },
-          },
-        },
+        -- roslyn_ls = { -- roslyn for roslyn.nvim / roslyn_ls for nvim-lspconfig
+        --   settings = {
+        --     --   ['csharp|background_analysis'] = {
+        --     -- dotnet_compiler_diagnostics_scope = 'fullSolution',
+        --     -- },
+        --   },
+        -- },
         -- csharp_ls = {
         --   settings = {
         --     --   ['csharp|background_analysis'] = {

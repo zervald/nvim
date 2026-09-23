@@ -1,10 +1,13 @@
 return {
   'neovim/nvim-lspconfig',
+  lazy = false,
   opts = {
     servers = {
       nil_ls = {
+        mason = false,
         settings = {
           ['nil'] = {
+            mason = false,
             formatting = {
               -- External formatter command (with arguments).
               -- It should accepts file content in stdin and print the formatted code into stdout.

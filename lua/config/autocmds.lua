@@ -26,3 +26,12 @@ function QuickTerm(cmd, wait)
   vim.cmd.startinsert()
   vim.fn.feedkeys(cmd)
 end
+
+vim.api.nvim_create_augroup('formatting', { clear = false })
+
+-- Prevent stripping EOL on save
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead', 'BufWritePost' }, {
+  group = 'formatting',
+  pattern = '*',
+  command = 'setl fixeol',
+})

@@ -3,7 +3,12 @@ return {
     'stevearc/conform.nvim',
     opts = {
       formatters_by_ft = {
-        cs = { 'csharpier' },
+        cs = { lsp_format = 'prefer' },
+        -- "never"	never use the LSP for formatting (default)
+        -- "fallback"	LSP formatting is used when no other formatters are available
+        -- "prefer"	use only LSP formatting when available
+        -- "first"	LSP formatting is used when available and then other formatters
+        -- "last"	other formatters are used then LSP formatting when available
         fsharp = { 'fantomas' },
       },
     },

@@ -60,27 +60,27 @@ return {
       lock_target = false,
     },
   },
-  {
-    'neovim/nvim-lspconfig',
-    opts = {
-      servers = {
-        -- roslyn_ls = { -- roslyn for roslyn.nvim / roslyn_ls for nvim-lspconfig
-        --   settings = {
-        --     --   ['csharp|background_analysis'] = {
-        --     -- dotnet_compiler_diagnostics_scope = 'fullSolution',
-        --     -- },
-        --   },
-        -- },
-        -- csharp_ls = {
-        --   settings = {
-        --     --   ['csharp|background_analysis'] = {
-        --     -- dotnet_compiler_diagnostics_scope = 'fullSolution',
-        --     -- },
-        --   },
-        -- },
-      },
-    },
-  },
+  -- {
+  --   'neovim/nvim-lspconfig',
+  --   opts = {
+  --     servers = {
+  --       -- roslyn_ls = { -- roslyn for roslyn.nvim / roslyn_ls for nvim-lspconfig
+  --       --   settings = {
+  --       --     --   ['csharp|background_analysis'] = {
+  --       --     -- dotnet_compiler_diagnostics_scope = 'fullSolution',
+  --       --     -- },
+  --       --   },
+  --       -- },
+  --       -- csharp_ls = {
+  --       --   settings = {
+  --       --     --   ['csharp|background_analysis'] = {
+  --       --     -- dotnet_compiler_diagnostics_scope = 'fullSolution',
+  --       --     -- },
+  --       --   },
+  --       -- },
+  --     },
+  --   },
+  -- },
   {
     -- DAP setup for dotnet
     'mfussenegger/nvim-dap',

@@ -43,10 +43,11 @@ vim.g.root_spec = { 'lsp', { '.git', 'lua' }, 'cwd' }
 if vim.fn.has 'wsl' then
   vim.o.shell = 'fish'
   set_autoformat({ 'cpp' }, false)
+  set_autoformat({ 'py' }, false)
 elseif vim.fn.has 'win32' or 'win64' then
-  vim.o.shell = 'powershell.exe'
+  vim.o.shell = 'pwsh.exe'
   set_autoformat({ 'cpp' }, false)
-  set_autoformat({ 'cs' }, false)
+  set_autoformat({ 'py' }, false)
 end
 
 if vim.g.neovide then

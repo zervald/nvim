@@ -9,6 +9,10 @@ local set_autoformat = function(pattern, bool_val)
   })
 end
 
+local at_work = function()
+  return vim.fn.has 'win32' or vim.fn.has 'win64' or vim.fn.has 'wsl'
+end
+
 -- === Options ===
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/vim.options.lua
@@ -39,13 +43,13 @@ vim.opt.spelllang = 'fr'
 -- vim.g.root_spec = { '.git', { 'lsp', 'lua' }, 'cwd' }
 vim.g.root_spec = { 'lsp', { '.git', 'lua' }, 'cwd' }
 
--- on windows
-if vim.fn.has 'wsl' then
-  vim.o.shell = 'fish'
-  set_autoformat({ 'cpp' }, false)
-  set_autoformat({ 'py' }, false)
-elseif vim.fn.has 'win32' or 'win64' then
+-- pwsh on windows
+if vim.fn.has 'win32' or vim.fn.has 'win64' then
   vim.o.shell = 'pwsh.exe'
+end
+
+if at_work() then
+  set_autoformat({ 'cs' }, false)
   set_autoformat({ 'cpp' }, false)
   set_autoformat({ 'py' }, false)
 end

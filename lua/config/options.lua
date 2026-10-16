@@ -45,7 +45,9 @@ vim.g.root_spec = { 'lsp', { '.git', 'lua' }, 'cwd' }
 
 -- pwsh on windows
 if vim.fn.has 'win32' or vim.fn.has 'win64' then
-  vim.o.shell = 'pwsh.exe'
+  if vim.fn.executable 'pwsh' == true then
+    vim.opt.shell = 'pwsh'
+  end
 end
 
 if at_work() then
@@ -55,5 +57,5 @@ if at_work() then
 end
 
 if vim.g.neovide then
-  vim.g.neovide_scale_factor = 0.9
+  vim.g.neovide_scale_factor = 0.8
 end

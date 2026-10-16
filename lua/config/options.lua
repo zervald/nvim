@@ -45,7 +45,7 @@ vim.g.root_spec = { 'lsp', { '.git', 'lua' }, 'cwd' }
 
 -- pwsh on windows
 if vim.fn.has 'win32' or vim.fn.has 'win64' then
-  vim.g.shell = 'pwsh.exe'
+  vim.o.shell = 'pwsh.exe'
 end
 
 if at_work() then

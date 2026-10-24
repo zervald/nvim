@@ -9,9 +9,8 @@ local set_autoformat = function(pattern, bool_val)
   })
 end
 
-local at_work = function()
-  return vim.fn.has 'win32' or vim.fn.has 'win64' or vim.fn.has 'wsl'
-end
+local on_wsl = vim.fn.has 'wsl' == true
+local on_windows = vim.fn.has 'win32' == true or vim.fn.has 'win64' == true
 
 -- === Options ===
 -- Options are automatically loaded before lazy.nvim startup
@@ -43,16 +42,20 @@ vim.opt.spelllang = 'fr'
 -- vim.g.root_spec = { '.git', { 'lsp', 'lua' }, 'cwd' }
 vim.g.root_spec = { 'lsp', { '.git', 'lua' }, 'cwd' }
 
--- Windows section
-if vim.fn.has 'win32' or vim.fn.has 'win64' then
-  -- pwsh on windows
+-- Windows
+if on_windows then
+  -- pwsh on windows, otherwise defaults to cmd
   if vim.fn.executable 'pwsh' == true then
     vim.g.shell = 'pwsh'
   end
+
+  set_autoformat({ 'cs' }, false)
+  set_autoformat({ 'cpp' }, false)
+  set_autoformat({ 'py' }, false)
 end
 
 -- WSL
-if vim.fn.has 'wsl' then
+if on_wsl then
   vim.g.clipboard = {
     name = 'WslClipboard',
     copy = {
@@ -65,12 +68,6 @@ if vim.fn.has 'wsl' then
     },
     cache_enabled = 0,
   }
-end
-
-if at_work() then
-  set_autoformat({ 'cs' }, false)
-  set_autoformat({ 'cpp' }, false)
-  set_autoformat({ 'py' }, false)
 end
 
 if vim.g.neovide then

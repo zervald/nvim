@@ -30,7 +30,7 @@ vim.opt.conceallevel = 1
 vim.opt.breakindent = true
 vim.opt.colorcolumn = '100'
 
-vim.opt.clipboard = 'unnamed'
+-- vim.g.clipboard = 'unnamed'
 
 -- vim.g.maplocalleader = ","
 -- vim.g.mapleader = "<space>"

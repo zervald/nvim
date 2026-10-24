@@ -43,11 +43,28 @@ vim.opt.spelllang = 'fr'
 -- vim.g.root_spec = { '.git', { 'lsp', 'lua' }, 'cwd' }
 vim.g.root_spec = { 'lsp', { '.git', 'lua' }, 'cwd' }
 
--- pwsh on windows
+-- Windows section
 if vim.fn.has 'win32' or vim.fn.has 'win64' then
+  -- pwsh on windows
   if vim.fn.executable 'pwsh' == true then
-    vim.opt.shell = 'pwsh'
+    vim.g.shell = 'pwsh'
   end
+end
+
+-- WSL
+if vim.fn.has 'wsl' then
+  vim.g.clipboard = {
+    name = 'WslClipboard',
+    copy = {
+      ['+'] = 'clip.exe',
+      ['*'] = 'clip.exe',
+    },
+    paste = {
+      ['+'] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ['*'] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+  }
 end
 
 if at_work() then

@@ -83,6 +83,7 @@ let
           universal-ctags
 
           ## C / CPP
+          bear
           vscode-extensions.vadimcn.vscode-lldb # c/cpp debugger
           clang-tools # clangd lsp
 

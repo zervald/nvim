@@ -35,3 +35,23 @@ vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead', 'BufWritePost' }, {
   pattern = '*',
   command = 'setl fixeol',
 })
+
+-- ionodes cmd
+vim.api.nvim_create_user_command('Ionodes', function(opts)
+  if opts.args == 'cpp' or opts.args == 'import' then
+    require('config.ionodes')[opts.args]()
+  else
+    vim.notify('Usage: :Ionodes {cpp|import}', vim.log.levels.ERROR)
+  end
+end, {
+  nargs = 1,
+  complete = function(arg)
+    return vim.tbl_filter(function(command)
+      return vim.startswith(command, arg)
+    end, { 'cpp', 'import' })
+  end,
+  desc = 'Ionodes project tools',
+})
+
+-- User commands must start uppercase; expand the lowercase spelling only in command position.
+-- vim.cmd [[cnoreabbrev <expr> ionodes getcmdtype() ==# ':' && getcmdline() =~# '^ionodes$' ? 'Ionodes' : 'ionodes']]

@@ -12,7 +12,6 @@ return {
             '--function-arg-placeholders',
             '--fallback-style=Chromium',
             -- '--query-driver=/usr/bin/x86_64-w64-mingw32-g++',
-            '--compile-commands-dir=build',
           },
         },
       },

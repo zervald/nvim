@@ -9,8 +9,12 @@ local set_autoformat = function(pattern, bool_val)
   })
 end
 
-local on_wsl = vim.fn.has 'wsl' == true
-local on_windows = vim.fn.has 'win32' == true or vim.fn.has 'win64' == true
+local on_wsl = function()
+  return vim.fn.has 'wsl' == 1
+end
+local on_windows = function()
+  return (vim.fn.has 'win32' == 1) or (vim.fn.has 'win64' == 1)
+end
 
 -- === Options ===
 -- Options are automatically loaded before lazy.nvim startup
@@ -43,11 +47,15 @@ vim.opt.spelllang = 'fr'
 vim.g.root_spec = { 'lsp', { '.git', 'lua' }, 'cwd' }
 
 -- Windows
-if on_windows then
+if on_windows() then
   -- pwsh on windows, otherwise defaults to cmd
-  if vim.fn.executable 'pwsh' == true then
-    vim.g.shell = 'pwsh'
-  end
+  vim.opt.shell = (vim.fn.executable 'pwsh' == 1) and 'pwsh' or 'powershell'
+  vim.opt.shellcmdflag =
+    "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues['Out-File:Encoding']='utf8';Remove-Alias -Force -ErrorAction SilentlyContinue tee;"
+  vim.opt.shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+  vim.opt.shellpipe = '2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode'
+  vim.opt.shellquote = ''
+  vim.opt.shellxquote = ''
 
   set_autoformat({ 'cs' }, false)
   set_autoformat({ 'cpp' }, false)
@@ -55,7 +63,7 @@ if on_windows then
 end
 
 -- WSL
-if on_wsl then
+if on_wsl() then
   vim.g.clipboard = {
     name = 'WslClipboard',
     copy = {

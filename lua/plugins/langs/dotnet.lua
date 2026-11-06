@@ -69,7 +69,6 @@ return {
           cmd = require('nixCatsUtils').lazyAdd(nil, {
             'Microsoft.CodeAnalysis.LanguageServer',
             '--stdio',
-            '--daemon-mode',
             '--clientProcessId',
             tostring(vim.uv.os_getpid()),
           }),

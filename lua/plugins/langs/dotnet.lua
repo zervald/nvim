@@ -65,6 +65,14 @@ return {
     opts = {
       servers = {
         roslyn = { -- roslyn for roslyn.nvim / roslyn_ls for nvim lsp
+          mason = require('nixCatsUtils').lazyAdd(true, false),
+          cmd = require('nixCatsUtils').lazyAdd(nil, {
+            'Microsoft.CodeAnalysis.LanguageServer',
+            '--stdio',
+            '--daemon-mode',
+            '--clientProcessId',
+            tostring(vim.uv.os_getpid()),
+          }),
           settings = {
             ['csharp|background_analysis'] = {
               ['dotnet_analyzer_diagnostics_scope'] = 'fullSolution',

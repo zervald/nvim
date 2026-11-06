@@ -100,7 +100,7 @@ let
           vscode-json-languageserver
 
           # Csharp | C# | dotnet | .NET
-          # roslyn-ls # lsp
+          roslyn-ls # lsp
           csharpier # csharp formatter
           fantomas # Fsharp lang
           netcoredbg # dotnet dubugger

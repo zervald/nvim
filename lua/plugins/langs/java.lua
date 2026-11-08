@@ -35,21 +35,21 @@ return {
         },
       },
     },
-    {
-      'nvim-treesitter/nvim-treesitter',
-      optional = true,
-      opts = {
-        ensure_installed = { 'java' },
-      },
+  },
+  {
+    'nvim-treesitter/nvim-treesitter',
+    optional = true,
+    opts = {
+      ensure_installed = { 'java' },
     },
-    {
-      'stevearc/conform.nvim',
-      optional = true,
-      opts = {
-        -- formatters = { java = { -- prepend_args = { "-i", "2" }, }, },
-        formatters_by_ft = {
-          java = { 'google-java-format' },
-        },
+  },
+  {
+    'stevearc/conform.nvim',
+    optional = true,
+    opts = {
+      -- formatters = { java = { -- prepend_args = { "-i", "2" }, }, },
+      formatters_by_ft = {
+        java = { 'google-java-format' },
       },
     },
   },

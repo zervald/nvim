@@ -23,16 +23,19 @@ return {
   {
     "mfussenegger/nvim-lint",
     optional = true,
+    -- Hide diagnostics as virtual text. This is a global display setting, so it
+    -- belongs at plugin init, not inside the per-linter factory below.
+    init = function()
+      vim.diagnostic.config({
+        -- underline = false,
+        virtual_text = false,
+        -- signs = true,
+        -- float = true,
+      })
+    end,
     opts = {
       linters = {
         ["markdownlint-cli2"] = function()
-          vim.diagnostic.config({
-            -- underline = false,
-            virtual_text = false,
-            -- signs = true,
-            -- float = true,
-          })
-
           return require("lint.util").wrap(mk2lint, function(diagnostic)
             return diagnostic
           end)

@@ -24,6 +24,20 @@ let
   # this allows you to use ${pkgs.stdenv.hostPlatform.system} whenever you want in those sections
   # without fear.
 
+  # pkg fixes for programs this config consumes.
+  # Kept here so the nvim submodule stays self-contained; applied to the
+  # pkgs passed to categoryDefinitions/packageDefinitions via
+  # dependencyOverlays below.
+  pkgOverrides = final: prev: {
+    asm-lsp = prev.asm-lsp.overrideAttrs (oldAttrs: {
+      nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ final.pkg-config ];
+      buildInputs = (oldAttrs.buildInputs or [ ]) ++ [ final.zstd ];
+    });
+    tectonic-unwrapped = prev.tectonic-unwrapped.overrideAttrs (oldAttrs: {
+      buildInputs = (oldAttrs.buildInputs or [ ]) ++ [ final.aws-lc ];
+    });
+  };
+
   dependencyOverlays = # (import ./overlays inputs) ++
     [
       # This overlay grabs all the inputs named in the format
@@ -31,6 +45,11 @@ let
       # Once we add this overlay to our nixpkgs, we are able to
       # use `pkgs.neovimPlugins`, which is a set of our plugins.
       (utils.standardPluginOverlay inputs)
+      # pkg fixes for programs this config consumes.
+      # Overlays here are passed to `import nixpkgs { overlays = ...; }`
+      # by the nixCats builder, so they actually apply to the pkgs used
+      # by categoryDefinitions/packageDefinitions.
+      pkgOverrides
       # add any other flake overlays here.
 
       # when other people mess up their overlays by wrapping them with system,

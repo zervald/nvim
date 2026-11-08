@@ -21,7 +21,7 @@ function QuickTerm(cmd, wait)
   end
 
   vim.cmd.wa()
-  vim.cmd('cd ' .. root)
+  vim.cmd.cd { args = { root } }
   Snacks.terminal.open(nil)
   vim.cmd.startinsert()
   vim.fn.feedkeys(cmd)

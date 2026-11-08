@@ -28,7 +28,7 @@ end, { expr = true })
 
 -- leader p change pwd
 map('n', '<leader>p', function()
-  vim.cmd 'cd %:h/'
+  vim.cmd.cd { args = { vim.fn.expand '%:h' } }
 end, { desc = 'Set pwd buffer parent directory' })
 
 -- Macro

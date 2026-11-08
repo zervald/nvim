@@ -56,7 +56,10 @@ if on_windows() then
   vim.opt.shellpipe = '2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode'
   vim.opt.shellquote = ''
   vim.opt.shellxquote = ''
+end
 
+-- Windows / WSL
+if on_windows() or on_wsl() then
   set_autoformat({ 'cs' }, false)
   set_autoformat({ 'cpp' }, false)
   set_autoformat({ 'py' }, false)

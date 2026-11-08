@@ -1,9 +1,10 @@
 local map = vim.keymap.set
+local quickterm = require 'config.quickterm'
 
 map("n", "<leader>rm", function()
-  QuickTerm("make ", true)
+  quickterm.open("make ", true)
 end, { desc = "make -" })
 
 map("n", "<leader>rr", function()
-  QuickTerm("make run")
+  quickterm.open("make run")
 end, { desc = "make run" })

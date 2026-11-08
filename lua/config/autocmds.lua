@@ -29,7 +29,7 @@ end
 
 vim.api.nvim_create_augroup('formatting', { clear = false })
 
--- Prevent stripping EOL on save
+-- Keep final EOL consistent on save (fixeol: restore a missing EOL at EOF)
 vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead', 'BufWritePost' }, {
   group = 'formatting',
   pattern = '*',

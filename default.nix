@@ -190,8 +190,8 @@ let
           vim-startuptime
           which-key-nvim
 
-          # nvim-treesitter-textobjects
-          # nvim-treesitter.withAllGrammars
+          nvim-treesitter-textobjects
+          nvim-treesitter.withAllGrammars
           # This is for if you only want some of the grammars
           # (nvim-treesitter.withPlugins (
           #   plugins: with plugins; [

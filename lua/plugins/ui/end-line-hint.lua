@@ -1,6 +1,7 @@
 return {
+  -- https://github.com/chrisgrieser/nvim-lsp-endhints
   'chrisgrieser/nvim-lsp-endhints',
-  enabled = false,
+  enabled = true,
   event = 'LspAttach',
   -- opts required, even if empty
   opts = {},

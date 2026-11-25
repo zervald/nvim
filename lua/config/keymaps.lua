@@ -17,10 +17,9 @@ end)
 -- map('t', '<esc><esc>', '<C-\\><C-n>')
 
 -- abreviation: %% -> buffer parent dir
-local fn = vim.fn
 map('c', '%%', function()
-  if fn.getcmdtype() == ':' then
-    return fn.expand '%:h' .. '/'
+  if vim.fn.getcmdtype() == ':' then
+    return vim.fn.expand '%:h' .. '/'
   else
     return '%%'
   end
@@ -42,8 +41,7 @@ map('n', 'q', '')
 -- Spelling lang
 unmap('n', '<leader>ul')
 map('n', '<leader>ul', function()
-  local lang = vim.o.spelllang
-  if lang == 'en' then
+  if vim.o.spelllang == 'en' then
     vim.o.spelllang = 'fr'
   else
     vim.o.spelllang = 'en'
